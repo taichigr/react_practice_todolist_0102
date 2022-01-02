@@ -54,17 +54,16 @@ li {
   font-size: 16px;
   line-height: 32px;
 }
-button {
+/* button {
   border: none;
   padding: 8px 16px;
   background-color: #ffc87a;
   border-radius: 8px;
   font-weight: bold;
   color: #fff;
-
 }
 button:hover {
   cursor: pointer;
   opacity: 0.8;
-}
+} */
 

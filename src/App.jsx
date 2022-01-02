@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { PrimaryButton } from "./components/atom/buttons/PrimaryButton";
 
 function App() {
   const [todoText, setTodoText] = useState("");
@@ -34,7 +35,7 @@ function App() {
         <div className="container">
           <div className="inputArea">
             <input type="text" value={todoText} placeholder="text" autoFocus onChange={(e) => setTodoText(e.target.value)} />
-            <button className="c-button" onClick={onClickAdd}>追加</button>
+            <PrimaryButton onClick={onClickAdd}>追加</PrimaryButton>
           </div>
           <div className="todoAreaWraper">
             <h3>incomplete Todo</h3>
