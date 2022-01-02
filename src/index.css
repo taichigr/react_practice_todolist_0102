@@ -8,9 +8,63 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fbf1e4;
+  font-size: 16px;
+}
+h1, h2, h3, h4, h5, p, li {
+  color: #fff;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  width: 80%;
+  margin: 36px auto;
+}
+input {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+input:active{
+  border: none;
+}
+
+.todoAreaWraper {
+  background-color: #54486e;
+  padding: 20px;
+  margin-top: 32px;
+  border-radius: 8px;
+}
+
+/* .incompleteTodo {
+  display: flex;
+} */
+ul {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+}
+li {
+  margin-left: 8px;
+  font-size: 16px;
+  line-height: 32px;
+}
+button {
+  border: none;
+  padding: 8px 16px;
+  background-color: #ffc87a;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #fff;
+
+}
+button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
