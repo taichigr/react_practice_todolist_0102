@@ -1,11 +1,19 @@
+// TODO リファクタリング　コンポーネント化
+// hooks化
+
 import { useCallback, useState } from "react";
-import { PrimaryButton } from "./components/atom/buttons/PrimaryButton";
+import { AlertMessage } from "./components/molecules/AlertMessage";
+import { InputArea } from "./components/organisms/inputArea/InputArea";
+import { CompleteTodoArea } from "./components/organisms/todos/CompleteTodoArea";
+import { IncompleteTodoArea } from "./components/organisms/todos/IncompleteTodoArea";
 
 function App() {
   const [todoText, setTodoText] = useState("");
   const [incompleteTodos, setIncompleteTodos] = useState([]);
   const [completeTodos, setCompleteTodos] = useState([]);
+  const [inputAlertFlag, setInputAlertFlag] = useState(false);
 
+  const onChangeInput = (e) => setTodoText(e.target.value)
 
   const onClickAdd = () => {
     if(todoText === "") return;
@@ -28,46 +36,34 @@ function App() {
     setTodoList(newTodoList)
   }
 
+  
+  // incompleteTodos.length >= 5 ? setInputAlertFlag(true): setInputAlertFlag(false)
+
 
   return (
     <div className="App">
-      <div className="main">
         <div className="container">
-          <div className="inputArea">
-            <input type="text" value={todoText} placeholder="text" autoFocus onChange={(e) => setTodoText(e.target.value)} />
-            <PrimaryButton onClick={onClickAdd}>追加</PrimaryButton>
-          </div>
-          <div className="todoAreaWraper">
-            <h3>incomplete Todo</h3>
-            <div className="inompleteTodo">
-                {incompleteTodos.map((todo, index) => (
-                  <ul key={index}>
-                    <li>{todo}</li>
-                    <li>
-                      <button className="c-button" onClick={() => onClickToCompleteList(index)}>完了</button>
-                    </li>
-                    <li>
-                      <button className="c-button" onClick={() => onClickDelete(index, incompleteTodos, setIncompleteTodos)}>削除</button>
-                    </li>
-                  </ul>
-                ))}
-            </div>
-          </div>
-          <div className="todoAreaWraper">
-            <h3>complete Todo</h3>
-            <div className="completeTodo">
-            {completeTodos.map((todo, index) => (
-                  <ul key={index}>
-                    <li>{todo}</li>
-                    <li>
-                      <button className="c-button" onClick={() => onClickDelete(index, completeTodos, setCompleteTodos)}>削除</button>
-                    </li>
-                  </ul>
-                ))}
-            </div>
-          </div>
+          <InputArea
+            value={todoText}
+            onChangeInput={onChangeInput}
+            onClickAdd={onClickAdd}
+            buttonText="追加"
+          />
+          {true ? (<AlertMessage message="タスクを消化しましょう" />): ("")}
+          
+          <IncompleteTodoArea 
+            incompleteTodos={incompleteTodos} 
+            setIncompleteTodos={setIncompleteTodos} 
+            onClickToCompleteList={onClickToCompleteList} 
+            onClickDelete={onClickDelete} 
+          />
+
+          <CompleteTodoArea 
+            completeTodos={completeTodos} 
+            setCompleteTodos={setCompleteTodos} 
+            onClickDelete={onClickDelete} 
+          />
         </div>
-      </div>
       
     </div>
   );

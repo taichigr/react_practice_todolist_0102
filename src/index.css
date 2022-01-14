@@ -24,7 +24,7 @@ code {
   width: 80%;
   margin: 36px auto;
 }
-input {
+/* input {
   border: none;
   border-radius: 8px;
   padding: 8px 16px;
@@ -32,18 +32,16 @@ input {
 }
 input:active{
   border: none;
-}
-
+} */
+/* 
 .todoAreaWraper {
   background-color: #54486e;
   padding: 20px;
   margin-top: 32px;
   border-radius: 8px;
-}
-
-/* .incompleteTodo {
-  display: flex;
 } */
+
+
 ul {
   text-decoration: none;
   list-style: none;
