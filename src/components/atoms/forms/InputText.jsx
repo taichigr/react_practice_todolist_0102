@@ -12,7 +12,7 @@ export const InputText = (props) => {
         placeholder="text" 
         autoFocus 
         onChange={onChange} 
-        disabled={false}
+        disabled={inputFlag}
       />    
     </>
   )

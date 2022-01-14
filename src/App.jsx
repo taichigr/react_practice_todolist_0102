@@ -1,7 +1,7 @@
 // TODO リファクタリング　コンポーネント化
 // hooks化
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AlertMessage } from "./components/molecules/AlertMessage";
 import { InputArea } from "./components/organisms/inputArea/InputArea";
 import { CompleteTodoArea } from "./components/organisms/todos/CompleteTodoArea";
@@ -36,8 +36,9 @@ function App() {
     setTodoList(newTodoList)
   }
 
-  
-  // incompleteTodos.length >= 5 ? setInputAlertFlag(true): setInputAlertFlag(false)
+  useEffect(() => { 
+    incompleteTodos.length >= 5 ? setInputAlertFlag(true): setInputAlertFlag(false)
+  }, [incompleteTodos])
 
 
   return (
@@ -48,8 +49,9 @@ function App() {
             onChangeInput={onChangeInput}
             onClickAdd={onClickAdd}
             buttonText="追加"
+            inputFlag={inputAlertFlag}
           />
-          {true ? (<AlertMessage message="タスクを消化しましょう" />): ("")}
+          {inputAlertFlag ? (<AlertMessage message="タスクを消化しましょう" />): ("")}
           
           <IncompleteTodoArea 
             incompleteTodos={incompleteTodos} 
